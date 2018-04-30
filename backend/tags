@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOWED_HOSTS	backend/settings/base.py	/^ALLOWED_HOSTS = []$/;"	v
+ALLOWED_HOSTS	backend/settings/local.py	/^ALLOWED_HOSTS = []$/;"	v
+ALLOWED_HOSTS	backend/settings/production.py	/^ALLOWED_HOSTS = []$/;"	v
+AUTH_PASSWORD_VALIDATORS	backend/settings/base.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AUTH_PASSWORD_VALIDATORS	backend/settings/local.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AUTH_PASSWORD_VALIDATORS	backend/settings/production.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+BASE_DIR	backend/settings/base.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+BASE_DIR	backend/settings/local.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+BASE_DIR	backend/settings/production.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+DATABASES	backend/settings/base.py	/^DATABASES = {$/;"	v
+DATABASES	backend/settings/local.py	/^DATABASES = {$/;"	v
+DATABASES	backend/settings/production.py	/^DATABASES = {$/;"	v
+DEBUG	backend/settings/base.py	/^DEBUG = True$/;"	v
+DEBUG	backend/settings/local.py	/^DEBUG = True$/;"	v
+DEBUG	backend/settings/production.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	backend/settings/base.py	/^INSTALLED_APPS = [$/;"	v
+INSTALLED_APPS	backend/settings/local.py	/^INSTALLED_APPS = [$/;"	v
+INSTALLED_APPS	backend/settings/production.py	/^INSTALLED_APPS = [$/;"	v
+LANGUAGE_CODE	backend/settings/base.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LANGUAGE_CODE	backend/settings/local.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+LANGUAGE_CODE	backend/settings/production.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+MIDDLEWARE	backend/settings/base.py	/^MIDDLEWARE = [$/;"	v
+MIDDLEWARE	backend/settings/local.py	/^MIDDLEWARE = [$/;"	v
+MIDDLEWARE	backend/settings/production.py	/^MIDDLEWARE = [$/;"	v
+Meta	soops/models.py	/^    class Meta:$/;"	c	class:Soop
+Meta	soops/serializers.py	/^    class Meta:$/;"	c	class:SoopSerializer
+REST_FRAMEWORK	backend/settings/local.py	/^REST_FRAMEWORK = {$/;"	v
+ROOT_URLCONF	backend/settings/base.py	/^ROOT_URLCONF = 'backend.urls'$/;"	v
+ROOT_URLCONF	backend/settings/local.py	/^ROOT_URLCONF = 'backend.urls'$/;"	v
+ROOT_URLCONF	backend/settings/production.py	/^ROOT_URLCONF = 'backend.urls'$/;"	v
+STATIC_URL	backend/settings/base.py	/^STATIC_URL = '\/static\/'$/;"	v
+STATIC_URL	backend/settings/local.py	/^STATIC_URL = '\/static\/'$/;"	v
+STATIC_URL	backend/settings/production.py	/^STATIC_URL = '\/static\/'$/;"	v
+Soop	soops/models.py	/^class Soop(models.Model):$/;"	c
+SoopDetail	soops/views.py	/^class SoopDetail(generics.RetrieveUpdateDestroyAPIView):$/;"	c
+SoopList	soops/views.py	/^class SoopList(generics.ListCreateAPIView):$/;"	c
+SoopSerializer	soops/serializers.py	/^class SoopSerializer(serializers.HyperlinkedModelSerializer):$/;"	c
+SoopsConfig	soops/apps.py	/^class SoopsConfig(AppConfig):$/;"	c
+TEMPLATES	backend/settings/base.py	/^TEMPLATES = [$/;"	v
+TEMPLATES	backend/settings/local.py	/^TEMPLATES = [$/;"	v
+TEMPLATES	backend/settings/production.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	backend/settings/base.py	/^TIME_ZONE = 'UTC'$/;"	v
+TIME_ZONE	backend/settings/local.py	/^TIME_ZONE = 'UTC'$/;"	v
+TIME_ZONE	backend/settings/production.py	/^TIME_ZONE = 'UTC'$/;"	v
+USE_I18N	backend/settings/base.py	/^USE_I18N = True$/;"	v
+USE_I18N	backend/settings/local.py	/^USE_I18N = True$/;"	v
+USE_I18N	backend/settings/production.py	/^USE_I18N = True$/;"	v
+USE_L10N	backend/settings/base.py	/^USE_L10N = True$/;"	v
+USE_L10N	backend/settings/local.py	/^USE_L10N = True$/;"	v
+USE_L10N	backend/settings/production.py	/^USE_L10N = True$/;"	v
+USE_TZ	backend/settings/base.py	/^USE_TZ = True$/;"	v
+USE_TZ	backend/settings/local.py	/^USE_TZ = True$/;"	v
+USE_TZ	backend/settings/production.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	backend/settings/base.py	/^WSGI_APPLICATION = 'backend.wsgi.application'$/;"	v
+WSGI_APPLICATION	backend/settings/local.py	/^WSGI_APPLICATION = 'backend.wsgi.application'$/;"	v
+WSGI_APPLICATION	backend/settings/production.py	/^WSGI_APPLICATION = 'backend.wsgi.application'$/;"	v
+api_root	backend/views.py	/^def api_root(request, format=None):$/;"	f
+app_name	soops/urls.py	/^app_name='soops'$/;"	v
+application	backend/wsgi.py	/^application = get_wsgi_application()$/;"	v
+blank	soops/models.py	/^                               blank=False,$/;"	v	class:Soop
+content	soops/models.py	/^    content = models.CharField(max_length=3000, $/;"	v	class:Soop
+created	soops/models.py	/^    created = models.DateTimeField(auto_now_add=True)$/;"	v	class:Soop
+extra_kwargs	soops/serializers.py	/^        extra_kwargs = {$/;"	v	class:SoopSerializer.Meta
+fields	soops/serializers.py	/^        fields = [$/;"	v	class:SoopSerializer.Meta
+get_queryset	soops/views.py	/^    def get_queryset(self):$/;"	m	class:SoopDetail
+model	soops/serializers.py	/^        model = Soop$/;"	v	class:SoopSerializer.Meta
+name	soops/apps.py	/^    name = 'soops'$/;"	v	class:SoopsConfig
+name	soops/urls.py	/^        name='soop-detail'),$/;"	v
+null	soops/models.py	/^                               null=False)$/;"	v	class:Soop
+ordering	soops/models.py	/^        ordering = ['created',]$/;"	v	class:Soop.Meta
+perform_create	soops/views.py	/^    def perform_create(self, serializer):$/;"	m	class:SoopList
+queryset	soops/views.py	/^    queryset = Soop.objects.all()$/;"	v	class:SoopList
+serializer_class	soops/views.py	/^    serializer_class = SoopSerializer$/;"	v	class:SoopDetail
+serializer_class	soops/views.py	/^    serializer_class = SoopSerializer$/;"	v	class:SoopList
+unique	soops/models.py	/^                               unique=True, $/;"	v	class:Soop
+urlpatterns	backend/urls.py	/^urlpatterns = [$/;"	v
+urlpatterns	soops/urls.py	/^urlpatterns = [$/;"	v

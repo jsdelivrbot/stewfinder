@@ -1,0 +1,14 @@
+containers/book-list.js
+containers/weekday-menu.js
+containers/soop-list.js
+containers/book-detail.js
+reducers/reducer_active_soop.js
+reducers/index.js
+components/soop_detail.js
+reducers/reducer_books.js
+reducers/reducer_soops.js
+reducers/reducer_active_book.js
+actions/index.js
+index.js
+components/app.js
+components/soop_item.js

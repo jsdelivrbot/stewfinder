@@ -1,0 +1,266 @@
+CS_LAST_WORKSPACE: beatlstw2
+CS_WORKSPACE_BEGIN: beatlstw
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+exe "cd " . escape(expand("<sfile>:p:h"), ' ')
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +9 containers/soop-list.js
+badd +1 reducers/reducer_soops.js
+badd +1 reducers/index.js
+badd +2 reducers/reducer_active_soop.js
+badd +7 actions/index.js
+badd +1 index.js
+badd +0 containers/DateBar.js
+badd +1 selectors/selected_soop.js
+badd +0 components/app.js
+argglobal
+silent! argdel *
+$argadd ~/kod/react/beatlstw/frontend/src/index.js
+set stal=2
+edit containers/DateBar.js
+edit containers/soop-list.js
+let t:CtrlSpaceLabel = 'containers'
+edit containers/DateBar.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+tabedit actions/index.js
+edit actions/index.js
+let t:CtrlSpaceLabel = 'actions'
+edit actions/index.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 7 - ((6 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+7
+normal! 0
+tabedit reducers/index.js
+edit reducers/reducer_soops.js
+edit reducers/index.js
+edit reducers/reducer_active_soop.js
+let t:CtrlSpaceLabel = 'reducers'
+edit reducers/index.js
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 50 + 51) / 102)
+exe 'vert 2resize ' . ((&columns * 51 + 51) / 102)
+argglobal
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+argglobal
+if bufexists('reducers/reducer_active_soop.js') | buffer reducers/reducer_active_soop.js | else | edit reducers/reducer_active_soop.js | endif
+let s:l = 1 - ((0 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 50 + 51) / 102)
+exe 'vert 2resize ' . ((&columns * 51 + 51) / 102)
+tabedit selectors/selected_soop.js
+edit selectors/selected_soop.js
+let t:CtrlSpaceLabel = 'selectors'
+edit selectors/selected_soop.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 4 - ((3 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4
+normal! 0
+tabedit components/app.js
+edit components/app.js
+let t:CtrlSpaceLabel = 'components'
+edit components/app.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+tabedit ~/kod/react/beatlstw/frontend/public/style/style.css
+edit /home/johnny/kod/react/beatlstw/frontend/public/style/style.css
+let t:CtrlSpaceLabel = 'styles'
+edit ~/kod/react/beatlstw/frontend/public/style/style.css
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 1 - ((0 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+tabnext 6
+set stal=1
+if exists('s:wipebuf') && s:wipebuf != bufnr('%')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
+CS_WORKSPACE_END: beatlstw
+CS_WORKSPACE_BEGIN: beatlstw2
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+exe "cd " . escape(expand("<sfile>:p:h"), ' ')
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +6 reducers/reducer_soops.js
+badd +54 actions/index.js
+badd +10 index.js
+badd +8 components/app.js
+argglobal
+silent! argdel *
+$argadd ~/kod/react/beatlstw/frontend/src/reducers/reducer_soops.js
+set stal=2
+edit reducers/reducer_soops.js
+edit actions/index.js
+edit /home/johnny/kod/udemy/js/modernReact/blog-app/src/actions/index.js
+edit /home/johnny/kod/udemy/js/modernReact/blog-app/src/components/posts_index.js
+edit /home/johnny/kod/udemy/js/modernReact/blog-app/src/reducers/reducer_posts.js
+edit reducers/reducer_soops.js
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe '1resize ' . ((&lines * 28 + 30) / 60)
+exe 'vert 1resize ' . ((&columns * 104 + 104) / 208)
+exe '2resize ' . ((&lines * 28 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 104 + 104) / 208)
+exe 'vert 3resize ' . ((&columns * 103 + 104) / 208)
+argglobal
+let s:l = 6 - ((5 * winheight(0) + 14) / 28)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+6
+normal! 03|
+wincmd w
+argglobal
+if bufexists('actions/index.js') | buffer actions/index.js | else | edit actions/index.js | endif
+let s:l = 54 - ((18 * winheight(0) + 14) / 28)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+54
+normal! 0
+wincmd w
+argglobal
+if bufexists('~/kod/udemy/js/modernReact/blog-app/src/components/posts_index.js') | buffer ~/kod/udemy/js/modernReact/blog-app/src/components/posts_index.js | else | edit ~/kod/udemy/js/modernReact/blog-app/src/components/posts_index.js | endif
+let s:l = 14 - ((13 * winheight(0) + 28) / 57)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+14
+normal! 0
+wincmd w
+2wincmd w
+exe '1resize ' . ((&lines * 28 + 30) / 60)
+exe 'vert 1resize ' . ((&columns * 104 + 104) / 208)
+exe '2resize ' . ((&lines * 28 + 30) / 60)
+exe 'vert 2resize ' . ((&columns * 104 + 104) / 208)
+exe 'vert 3resize ' . ((&columns * 103 + 104) / 208)
+tabedit index.js
+edit index.js
+edit components/app.js
+edit index.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+let s:l = 10 - ((9 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+10
+normal! 037|
+tabnext 1
+set stal=1
+if exists('s:wipebuf') && s:wipebuf != bufnr('%')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
+CS_WORKSPACE_END: beatlstw2
