@@ -23,6 +23,12 @@ class SoopList extends Component {
           {this.props.activeSoop != null &&
             soop.title == this.props.activeSoop.title && (
               <div>
+                <p>
+                  <b>
+                    {soop.when} <br />
+                    {soop.location}
+                  </b>
+                </p>
                 {soop.details} <span> --</span>
                 <a href={soop.outUrl}> event link</a>
               </div>

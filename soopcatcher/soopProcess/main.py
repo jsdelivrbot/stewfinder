@@ -19,9 +19,7 @@ class processor(object):
                  startNum=None, 
                  endNum=None, 
                  linkRegex=None,
-                 today=False,
-                 *args,
-                 **kwargs
+                 today=False
                 ):
         super(processor, self).__init__()
 
@@ -34,19 +32,6 @@ class processor(object):
 
         # build input Df using the soopPull module and the information above
         self.inputDF = self.build_input_DF()
-
-        # build validated DF using inputDF
-        self.validatedDF = self.build_validated_DF(self.inputDF)
-
-        # build the feature extractor
-        self.featuredDF = self.build_featured_DF(self.validatedDF)
-
-        # pass *args and **kwargs to the summarizer
-        self.textSum = self.build_text_summarizer(
-            self.featuredDF,
-            *args, 
-            **kwargs
-        )
 
 
     def build_input_DF(self):
@@ -72,9 +57,17 @@ class processor(object):
         # return validated df
         return validatedDF
 
-    def build_featured_DF(self, inputDf):
+    def build_featured_DF(self, inputDf, 
+                          whenTag, descTag, locationTag,
+                          whenClass, descClass, locationClass):
         # from extractFeatures
-        extractor = featureExtractor(inputDf)
+
+        extractor = featureExtractor(
+            inputDf, 
+            whenTag=whenTag, descTag=descTag, locationTag=locationTag,
+            whenClass=whenClass, descClass=descClass, locationClass=locationClass
+        )
+
         featuredDF = extractor.extract_features()
 
         return featuredDF
@@ -82,9 +75,10 @@ class processor(object):
     def build_text_summarizer(self, inputDF, *args, **kwargs):
         # then build the summarizer
         summarizer = textSummarizer(inputDF, *args, **kwargs)
+        summarizedDF = summarizer.summarize_df()
 
         # and return it
-        return summarizer
+        return summarizedDF
 
     def check_links(self):
         inputDF = self.build_input_DF()
@@ -92,11 +86,35 @@ class processor(object):
         return inputDF.outUrl
         
 
-    def process(self):
-        df = self.featuredDF
+    def process(self, 
+                whenTag=None, descTag=None, locationTag=None,
+                whenClass=None, descClass=None, locationClass=None,
+                *args, **kwargs):
 
-        summary = self.textSum.summarize_df().loc[:, 'details']
-        df = df.assign(details=summary)
+        df = self.inputDF
+
+        # build validated DF using inputDF
+        validatedDF = self.build_validated_DF(df)
+
+        # build the feature extractor
+        featuredDF = self.build_featured_DF(
+            validatedDF, 
+            whenTag=whenTag, 
+            descTag=descTag,
+            locationTag=locationTag,
+            whenClass=whenClass,
+            descClass=descClass,
+            locationClass=locationClass
+        )
+
+        # pass *args and **kwargs to the summarizer
+        summarizedDF = self.build_text_summarizer(
+            featuredDF,
+            *args, 
+            **kwargs
+        )
+
+        df = summarizedDF
 
         if self.today == True:
             df = df.assign(day=time.strftime('%-m/%-d/%Y'))

@@ -9,6 +9,7 @@ import reducers from "./reducers";
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 localStorage.setItem("auth_token", "4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6");
+localStorage.setItem("root_url", "http://127.0.0.1:8000");
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

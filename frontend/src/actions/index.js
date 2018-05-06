@@ -5,9 +5,9 @@ export const SOOP_SELECTED = "soop_selected";
 export const DAY_SELECTED = "day_selected";
 export const FETCH_SOOPS = "fetch_soops";
 
-const ROOT_URL = "http://127.0.0.1:8000";
+const ROOT_URL = localStorage.getItem("root_url");
 const API_KEY = localStorage.getItem("auth_token");
-const AUTH_STR = "Token 4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6";
+const AUTH_STR = "Token " + API_KEY;
 
 export function selectSoop(soop) {
   return {

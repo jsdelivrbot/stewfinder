@@ -25,6 +25,10 @@ class Soop(models.Model):
                           null=False)
 
     food = models.CharField(max_length=500)
+
+    when = models.CharField(max_length=75, null=True)
+
+    location = models.CharField(max_length=500, null=True)
     
     class Meta:
         ordering = ['created',]

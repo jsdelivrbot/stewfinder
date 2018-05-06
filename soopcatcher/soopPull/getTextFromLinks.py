@@ -9,7 +9,7 @@ punct = {'!': ' ',
          '"': ' ',
          ',': ' ',
          '#': ' ',
-         '$': ' ',
+         # '$': ' ',
          '%': ' ',
          '&': ' ',
          ')': ' ',
@@ -81,8 +81,8 @@ class textScraper(object):
         ]
 
         # throw out the classes that don't contain text
-        for div in soup.find_all("div", {'class':'hidden-print'}):
-            div.decompose()
+        # for div in soup.find_all("div", {'class':'hidden-print'}):
+            # div.decompose()
 
         removeClasses = re.compile(
             '.*email.*|.*phone.*|.*advertise.*|.*footer.*|.*muted.*|.*dropdown.*|.*nav.*|.*hidden.*|.*meta.*|.*logo.*|.*title.*|.*copyright.*' 

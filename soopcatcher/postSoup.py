@@ -13,8 +13,9 @@ AUTH_STR = "Token 4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6"
 
 msu = soopProcess.processor(
     'http://calendar.msu.montana.edu/events/',
-    startNum=26477,
-    endNum=26485,
+    startNum=26400,
+    endNum=26405,
+    urlType='numbered',
 )
 
 
@@ -23,19 +24,31 @@ bozeMag = soopProcess.processor(
     linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
     urlType='crawled',
     today=True,
-    important_weight=100,
-    num_sentences=2
-
 )
 
 
-msuData = msu.process()
+msuData = msu.process(
+    whenTag='dd',
+    descTag='main',
+    descClass='col-sm-8',
+    important_weight=100,
+    num_sentences=2
+)
 
-bozeMagData = bozeMag.process()
+bozeMagData = bozeMag.process(
+    whenTag='p',
+    whenClass='date',
+    descTag='div',
+    descClass='description',
+    # locationTag='address',
+    # locationClass='location_text',
+    important_weight=100,
+    num_sentences=2
+)
 
 # msuData.append(otherData).reset_index(drop=True)
 allData = msuData.append(bozeMagData).reset_index(drop=True)
-print(allData.details)
+# allData.to_csv('data.csv')
 
 DATA = allData.to_dict('index')
 

@@ -27,7 +27,8 @@ stopWords = set([
     'cost $',
     'baby bistro',
     'international travel health and safety',
-    'montana sourced lunch special'
+    'montana sourced lunch special',
+    'study abroad drop',
 ])
 
 
@@ -50,14 +51,14 @@ class textValidator(object):
 
         # do a case insensitive search on text by enforcing lower case
         textLowered = text.lower()
+
+        # check for stopWord phrases
+        if any(x in textLowered for x in stopWords):
+            return list()
+
         textLowered = textLowered.split()
         textLowered = set(textLowered)
 
-        # check for stopwords
-        stopWordsPresent = set.intersection(stopWords, textLowered)
-
-        if len(stopWordsPresent) != 0:
-            return list()
 
         # check for foodwords
         foodWordsPresent = set.intersection(foodWords, textLowered)

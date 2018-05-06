@@ -18,6 +18,8 @@ class SoopSerializer(serializers.HyperlinkedModelSerializer):
             'day',
             'outUrl',
             'food',
+            'when',
+            'location'
         ]
 
         extra_kwargs = {
