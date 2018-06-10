@@ -116,7 +116,7 @@ class SoopList extends Component {
                   onClick={() => {
                     this.handleLike(soop);
                   }}
-                  className="btn btn-success btn-sm">
+                  className="btn btn-success btn-sm button">
                   {this.state[soop.id + 'likeLabel'] || 'like'}
                 </button>
                 <br />
@@ -128,7 +128,7 @@ class SoopList extends Component {
                     this.handleDislike(soop);
                     //this.props.actions.dislikeSoop.apply(soop);
                   }}
-                  className="btn btn-danger btn-sm">
+                  className="btn btn-danger btn-sm button">
                   {this.state[soop.id + 'dislikeLabel'] || 'dislike'}
                 </button>
               </div>

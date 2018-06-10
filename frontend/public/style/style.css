@@ -55,3 +55,8 @@ td.active:hover {
     margin-top: 15px;
     margin-bottom: 30px;
 }
+
+.button{
+    margin: 2px;
+    padding: 2px;
+}
