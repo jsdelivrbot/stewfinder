@@ -7,3 +7,4 @@ pip-selfcheck.json
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+__pycache__/
