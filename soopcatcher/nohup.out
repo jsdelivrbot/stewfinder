@@ -1,5 +1,0 @@
- ▸    heroku-cli: update available from 6.16.17-c1c6cd2 to 6.99.0-ec9edad
-Running python msu_post.py on stewpost... starting, run.5190 (Free)
-Running python msu_post.py on stewpost... connecting, run.5190 (Free)
-Running python msu_post.py on stewpost... up, run.5190 (Free)
- ▸    'EBADF': EBADF: bad file descriptor, read
