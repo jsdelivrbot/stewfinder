@@ -8,7 +8,8 @@ import App from "./components/app";
 import reducers from "./reducers";
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-localStorage.setItem("auth_token", "4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6");
+//when in doubt, reset this
+localStorage.setItem("auth_token", "01f3fa85a9d727bf4651baa2b753ada32390bd06");
 localStorage.setItem("root_url", "http://127.0.0.1:8000");
 
 ReactDOM.render(

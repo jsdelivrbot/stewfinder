@@ -82,7 +82,7 @@ class textValidator(object):
         urlTextFoodDF['food'] = textSeries
 
         # filter out the rows with no food
-        urlTextFoodDF = urlTextFoodDF.loc[
-            urlTextFoodDF.food.apply(lambda x: len(x)) > 0]
+        # urlTextFoodDF = urlTextFoodDF.loc[
+            # urlTextFoodDF.food.apply(lambda x: len(x)) > 0]
 
         return urlTextFoodDF

@@ -32,9 +32,26 @@
 }
 
 td.active {
-    background-color: #acc692;
+    background-color: #0077CC;
+    color: #ffffff;
 }
 
 td.active:hover {
-    background-color: #acc692;
+    background-color: #0077CC;
+}
+
+.left-align {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.soop-details{
+    margin: 10px;
+    padding: 10px;
+}
+
+.container {
+    margin-top: 15px;
+    margin-bottom: 30px;
 }

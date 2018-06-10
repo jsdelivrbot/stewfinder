@@ -59,13 +59,17 @@ class processor(object):
 
     def build_featured_DF(self, inputDf, 
                           whenTag, descTag, locationTag,
-                          whenClass, descClass, locationClass):
+                          whenClass, descClass, locationClass,
+                          whenRegex, locationRegex):
         # from extractFeatures
 
         extractor = featureExtractor(
             inputDf, 
             whenTag=whenTag, descTag=descTag, locationTag=locationTag,
-            whenClass=whenClass, descClass=descClass, locationClass=locationClass
+            whenClass=whenClass, descClass=descClass,
+            locationClass=locationClass,
+            whenRegex=whenRegex,
+            locationRegex=locationRegex
         )
 
         featuredDF = extractor.extract_features()
@@ -89,6 +93,7 @@ class processor(object):
     def process(self, 
                 whenTag=None, descTag=None, locationTag=None,
                 whenClass=None, descClass=None, locationClass=None,
+                whenRegex='.*', locationRegex='.*',
                 *args, **kwargs):
 
         df = self.inputDF
@@ -104,7 +109,9 @@ class processor(object):
             locationTag=locationTag,
             whenClass=whenClass,
             descClass=descClass,
-            locationClass=locationClass
+            locationClass=locationClass,
+            whenRegex=whenRegex,
+            locationRegex=locationRegex
         )
 
         # pass *args and **kwargs to the summarizer

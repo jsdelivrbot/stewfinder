@@ -13,8 +13,8 @@ AUTH_STR = "Token 4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6"
 
 msu = soopProcess.processor(
     'http://calendar.msu.montana.edu/events/',
-    startNum=26400,
-    endNum=26405,
+    startNum=26500,
+    endNum=26505,
     urlType='numbered',
 )
 
@@ -26,9 +26,10 @@ bozeMag = soopProcess.processor(
     today=True,
 )
 
-
 msuData = msu.process(
     whenTag='dd',
+    locationTag='dd',
+    locationRegex='^(?!.*(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday))',
     descTag='main',
     descClass='col-sm-8',
     important_weight=100,

@@ -1,3 +1,10 @@
+update node and npm
+npm install
+generate an auth_token from the backend (postman collection)
+set the auth_token in src/index.js
+srry, this blows
+
+-----------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
