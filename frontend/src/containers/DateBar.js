@@ -37,7 +37,7 @@ export const TODAY_NUM = today.getDay();
 export const TODAY_DAY = weekday[TODAY_NUM];
 
 class DateBar extends Component {
-  // returns an array of the next 7 days
+  // returns an array of the next x days
   getDays(startDate = today, daysToAdd = 5) {
     //this will be returned
     var returnDays = [];

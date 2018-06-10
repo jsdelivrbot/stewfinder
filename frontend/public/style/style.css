@@ -46,7 +46,7 @@ td.active:hover {
     padding: 0;
 }
 
-.soop-details{
+.soop-details {
     margin: 10px;
     padding: 10px;
 }
@@ -54,9 +54,4 @@ td.active:hover {
 .container {
     margin-top: 15px;
     margin-bottom: 30px;
-}
-
-.button{
-    margin: 2px;
-    padding: 2px;
 }

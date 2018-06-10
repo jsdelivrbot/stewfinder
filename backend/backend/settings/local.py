@@ -26,11 +26,14 @@ SECRET_KEY = 'ba_t3o90t$&3a25%jjqu9ap+w14zkf8j390y!+*g_8=p#*cbi='
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_EXPOSE_HEADERS = (
-    'Access-Control-Allow-Origin: *',
-)
+# CORS_EXPOSE_HEADERS = (
+    # 'Access-Control-Allow-Origin: *',
+    # 'Access-Control-Allow-Headers: *',
+    # 'Access-Control-Allow-Methods: *'
+# )
+
 
 # Application definition
 
@@ -45,8 +48,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-
-    'vote',
 
     'soops',
 ]
@@ -120,16 +121,22 @@ else:
    # ),
 # }
 
+# REST_FRAMEWORK = { 'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
+    # ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated',
+    # ),
+    # 'UNAUTHENTICATED_USER': None
+# }
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-            'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'UNAUTHENTICATED_USER': None
+    # other settings...
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
 }
 
 
@@ -170,8 +177,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 
 
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
+CSRF_COOKIE_NAME = "XSRF-TOKEN"

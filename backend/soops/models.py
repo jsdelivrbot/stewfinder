@@ -1,8 +1,7 @@
 from django.db import models
-from vote.models import VoteModel
 
 # Create your models here.
-class Soop(VoteModel, models.Model):
+class Soop(models.Model):
 
     """this will be mapped into the SQL DB"""
     created = models.DateTimeField(auto_now_add=True)
