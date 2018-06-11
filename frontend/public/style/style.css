@@ -59,4 +59,6 @@ td.active:hover {
 .button{
     margin: 2px;
     padding: 2px;
+    display: inline-flex;
+    flex-direction: row;
 }
