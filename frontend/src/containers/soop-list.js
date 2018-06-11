@@ -93,7 +93,32 @@ class SoopList extends Component {
             onClick={() => {
               this.selectSoop(soop);
             }}>
-            {soop.food + '... ' + soop.title}
+            <div>
+              {soop.food + '... ' + soop.title + ' '}
+              <div className="button">
+                <button
+                  ref={btn => {
+                    this.likebtn = btn;
+                  }}
+                  onClick={() => {
+                    this.handleLike(soop);
+                  }}
+                  className="btn btn-success btn-sm button">
+                  {this.state[soop.id + 'likeLabel'] || 'like'}
+                </button>
+                <button
+                  ref={btn => {
+                    this.dislikebtn = btn;
+                  }}
+                  onClick={() => {
+                    this.handleDislike(soop);
+                    //this.props.actions.dislikeSoop.apply(soop);
+                  }}
+                  className="btn btn-danger btn-sm button">
+                  {this.state[soop.id + 'dislikeLabel'] || 'dislike'}
+                </button>
+              </div>
+            </div>
           </li>
           {this.props.activeSoop != null &&
             soop.title == this.props.activeSoop.title && (
@@ -108,29 +133,6 @@ class SoopList extends Component {
                 <a href={soop.outUrl} className="btn btn-warning btn-sm">
                   event link
                 </a>
-                <br />
-                <button
-                  ref={btn => {
-                    this.likebtn = btn;
-                  }}
-                  onClick={() => {
-                    this.handleLike(soop);
-                  }}
-                  className="btn btn-success btn-sm button">
-                  {this.state[soop.id + 'likeLabel'] || 'like'}
-                </button>
-                <br />
-                <button
-                  ref={btn => {
-                    this.dislikebtn = btn;
-                  }}
-                  onClick={() => {
-                    this.handleDislike(soop);
-                    //this.props.actions.dislikeSoop.apply(soop);
-                  }}
-                  className="btn btn-danger btn-sm button">
-                  {this.state[soop.id + 'dislikeLabel'] || 'dislike'}
-                </button>
               </div>
             )}
         </div>
