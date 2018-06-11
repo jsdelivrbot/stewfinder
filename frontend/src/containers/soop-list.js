@@ -1,12 +1,88 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { selectSoop } from "../actions/index";
-import { bindActionCreators } from "redux";
-import { fetchSoops } from "../actions/index";
-import DateBar from "./DateBar";
-import selectedSoop from "../selectors/selected_soop";
+//@format
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {
+  getUserVotes,
+  deleteLike,
+  dislikeSoop,
+  likeSoop,
+  selectSoop
+} from '../actions/index';
+import {bindActionCreators} from 'redux';
+import {fetchSoops} from '../actions/index';
+import DateBar from './DateBar';
+import selectedSoop from '../selectors/selected_soop';
 
 class SoopList extends Component {
+  constructor() {
+    super();
+    this.state = {edited: [], likeLabel: 'like', dislikeLabel: 'dislike'};
+  }
+
+  handleLike(soop) {
+    //this.setState({edited: this.state.edited.concat(soop.id)});
+    let btn_classes = this.likebtn.classList;
+    let key;
+    let val;
+    let obj;
+
+    if (this.state[soop.id + 'likeLabel'] == 'liked') {
+      this.props.actions.deleteLike.apply(soop);
+
+      key = soop.id + 'likeLabel';
+      val = 'like';
+      obj = {};
+      obj[key] = val;
+
+      this.setState(obj);
+    } else {
+      this.props.actions.likeSoop.apply(soop);
+
+      key = soop.id + 'likeLabel';
+      val = 'liked';
+      obj = {};
+      obj[key] = val;
+
+      this.setState(obj);
+    }
+  }
+
+  handleDislike(soop) {
+    //this.setState({edited: this.state.edited.concat(soop.id)});
+    let btn_classes = this.dislikebtn.classList;
+
+    if (this.state[soop.id + 'dislikeLabel'] == 'disliked') {
+      this.props.actions.deleteLike.apply(soop);
+
+      var key = soop.id + 'dislikeLabel';
+      var val = 'dislike';
+      var obj = {};
+      obj[key] = val;
+
+      this.setState(obj);
+    } else {
+      this.props.actions.dislikeSoop.apply(soop);
+
+      var key = soop.id + 'dislikeLabel';
+      var val = 'disliked';
+      var obj = {};
+      obj[key] = val;
+
+      this.setState(obj);
+    }
+  }
+
+  selectSoop(soop) {
+    this.resetButtonState(soop);
+    this.props.actions.selectSoop.apply(soop);
+  }
+
+  resetButtonState(soop) {
+    //if (!this.state.edited.includes(soop.id)) {
+    this.setState({likeLabel: 'like', dislikeLabel: 'dislike'});
+    //}
+  }
+
   renderList() {
     return this.props.selectedSoops.map(soop => {
       return (
@@ -15,10 +91,9 @@ class SoopList extends Component {
             key={soop.title}
             className="list-group-item"
             onClick={() => {
-              this.props.actions.selectSoop.apply(soop);
-            }}
-          >
-            {soop.food + "... " + soop.title}
+              this.selectSoop(soop);
+            }}>
+            {soop.food + '... ' + soop.title}
           </li>
           {this.props.activeSoop != null &&
             soop.title == this.props.activeSoop.title && (
@@ -30,9 +105,32 @@ class SoopList extends Component {
                   </b>
                 </p>
                 {soop.details} <span> </span>
-                <a href={soop.outUrl} className="btn btn-success btn-sm">
+                <a href={soop.outUrl} className="btn btn-warning btn-sm">
                   event link
                 </a>
+                <br />
+                <button
+                  ref={btn => {
+                    this.likebtn = btn;
+                  }}
+                  onClick={() => {
+                    this.handleLike(soop);
+                  }}
+                  className="btn btn-success btn-sm button">
+                  {this.state[soop.id + 'likeLabel'] || 'like'}
+                </button>
+                <br />
+                <button
+                  ref={btn => {
+                    this.dislikebtn = btn;
+                  }}
+                  onClick={() => {
+                    this.handleDislike(soop);
+                    //this.props.actions.dislikeSoop.apply(soop);
+                  }}
+                  className="btn btn-danger btn-sm button">
+                  {this.state[soop.id + 'dislikeLabel'] || 'dislike'}
+                </button>
               </div>
             )}
         </div>
@@ -63,13 +161,22 @@ function mapStateToProps(state) {
 //return bindActionCreators({ selectSoop: selectSoop }, dispatch);
 //}
 
+//i think this shows up as this.props.actions.selectSoop.apply()
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      selectSoop: bindActionCreators({ apply: selectSoop }, dispatch),
-      fetchSoops: bindActionCreators({ apply: fetchSoops }, dispatch)
+      selectSoop: bindActionCreators({apply: selectSoop}, dispatch),
+      getUserVotes: bindActionCreators({apply: getUserVotes}, dispatch),
+      likeSoop: bindActionCreators({apply: likeSoop}, dispatch),
+      dislikeSoop: bindActionCreators({apply: dislikeSoop}, dispatch),
+      deleteLike: bindActionCreators({apply: deleteLike}, dispatch),
+      fetchSoops: bindActionCreators({apply: fetchSoops}, dispatch)
     }
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SoopList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SoopList);
+
