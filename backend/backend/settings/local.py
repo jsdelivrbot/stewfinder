@@ -123,25 +123,25 @@ else:
    # ),
 # }
 
-REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework.authentication.TokenAuthentication',
+# REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
+    # 'rest_framework.authentication.TokenAuthentication',
     # 'rest_framework.authentication.SessionAuthentication',
     # 'rest_framework.authentication.BasicAuthentication',
     # enables simple command line authentication
-),
-    'DEFAULT_PERMISSION_CLASSES': (
+# ),
+    # 'DEFAULT_PERMISSION_CLASSES': (
     # 'rest_framework.permissions.IsAuthenticated',
-    'rest_framework.permissions.IsAdminUser',
-),
+    # 'rest_framework.permissions.IsAdminUser',
+# ),
     # 'UNAUTHENTICATED_USER': None
-}
-
-# REST_FRAMEWORK = {
-# # other settings...
-
-# 'DEFAULT_AUTHENTICATION_CLASSES': [],
-# 'DEFAULT_PERMISSION_CLASSES': [],
 # }
+
+REST_FRAMEWORK = {
+# other settings...
+
+'DEFAULT_AUTHENTICATION_CLASSES': [],
+'DEFAULT_PERMISSION_CLASSES': [],
+}
 
 
 # Password validation
