@@ -1,5 +1,7 @@
 import time
+
 import requests
+
 import soopProcess
 import soopPull
 
@@ -7,8 +9,7 @@ import soopPull
 ROOT_URL = "http://127.0.0.1:8000"
 
 # put this in env variable pls
-AUTH_STR = "Token 4847d6ca5fb338bd0f35531c4609a0d1bf67b5a6"
-
+AUTH_STR = "Token 01f3fa85a9d727bf4651baa2b753ada32390bd06"
 
 
 msu = soopProcess.processor(
@@ -58,5 +59,5 @@ with requests.session() as client:
         client.post(
             ROOT_URL + '/api/soops/',
             data=DATA[row],
-            headers= {'Authorization': AUTH_STR}
+            headers={'Authorization': AUTH_STR}
         )
