@@ -33,7 +33,7 @@ CORS_ALLOW_CREDENTIALS = True
     # 'Access-Control-Allow-Origin: *',
     # 'Access-Control-Allow-Headers: *',
     # 'Access-Control-Allow-Methods: *'
-)
+# )
 
 
 # Application definition
@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     'soops',
     'vote'
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
