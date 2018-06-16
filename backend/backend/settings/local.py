@@ -26,14 +26,14 @@ SECRET_KEY = 'ba_t3o90t$&3a25%jjqu9ap+w14zkf8j390y!+*g_8=p#*cbi='
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_EXPOSE_HEADERS = (
-    'Access-Control-Allow-Origin: *',
+# CORS_EXPOSE_HEADERS = (
+    # 'Access-Control-Allow-Origin: *',
     # 'Access-Control-Allow-Headers: *',
     # 'Access-Control-Allow-Methods: *'
-)
+# )
 
 
 # Application definition
