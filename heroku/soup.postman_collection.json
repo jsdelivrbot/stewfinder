@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "99cb6337-6d76-4ee7-a6d6-04394c22fc13",
+		"name": "soup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authenticate [set token]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ef3eb75-6ff4-4d2f-b6dc-7052e08b0721",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"pm.environment.set(\"token\", jsonData.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "adminadmin",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						""
+					]
+				},
+				"description": "sets the token"
+			},
+			"response": []
+		},
+		{
+			"name": "check health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						""
+					]
+				},
+				"description": "after setting token"
+			},
+			"response": []
+		},
+		{
+			"name": "list of soups",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/api/soops/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"soops",
+						""
+					]
+				},
+				"description": "all soups ever published"
+			},
+			"response": []
+		},
+		{
+			"name": "create soup item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token {{token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "this is a soup",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "details",
+							"value": "there will be bacon and donuts",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "day",
+							"value": "06/10/2018",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "outUrl",
+							"value": "www.cornhub.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "food",
+							"value": "ur mom",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "when",
+							"value": "6:00 AM, sharp",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "las vegas",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/soops/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"soops",
+						""
+					]
+				},
+				"description": "all soups ever published"
+			},
+			"response": []
+		}
+	]
+}
