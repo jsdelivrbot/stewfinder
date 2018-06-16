@@ -29,11 +29,11 @@ ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_EXPOSE_HEADERS = (
-    # 'Access-Control-Allow-Origin: *',
+CORS_EXPOSE_HEADERS = (
+    'Access-Control-Allow-Origin: *',
     # 'Access-Control-Allow-Headers: *',
     # 'Access-Control-Allow-Methods: *'
-# )
+)
 
 
 # Application definition
@@ -136,10 +136,10 @@ else:
 # }
 
 REST_FRAMEWORK = {
-# other settings...
+    # other settings...
 
-'DEFAULT_AUTHENTICATION_CLASSES': [],
-'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
 }
 
 
