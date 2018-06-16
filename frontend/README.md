@@ -1,8 +1,10 @@
-update node and npm
-npm install
-generate an auth_token from the backend (postman collection)
-set the auth_token in src/index.js
-srry, this blows
+1. update node and npm 
+2. npm install 
+3. generate an auth_token from the backend (postman collection) 
+4. set the auth_token in src/index.js 
+5. srry, this blows
+
+6. to deploy, make sure all your aws auth stuff is taken care of and run deploy-frontend.sh
 
 -----------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

@@ -13,8 +13,16 @@ AUTH_STR = os.environ.get('SOOP_AUTH')
 # tmrw = datetime.today() + timedelta(days=1)
 # tmrwFormatted = datetime.strftime(tmrw, '%Y/%m/%d')
 
+# not really sure how this happened.... it shouldn't be this
+# bozeMag = soopProcess.processor(
+    # baseUrl='http://bozemanmagazine.com/events',
+    # linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
+    # urlType='crawled',
+    # today=True,
+# )
+
 bozeMag = soopProcess.processor(
-    baseUrl='http://bozemanmagazine.com/events',
+    baseUrl='http://bozemanmagazine.com/events/calendar/' + time.strftime('%Y/%m/%d'),
     linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
     urlType='crawled',
     today=True,

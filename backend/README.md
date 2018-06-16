@@ -5,3 +5,5 @@
 5. python manage.py createsuperuser
 6. python manage.py runserver
 7. get localhost:8000/admin and login with superuser
+
+8. to deploy, run take care of awseb auth and cli installs, then run eb deploy
