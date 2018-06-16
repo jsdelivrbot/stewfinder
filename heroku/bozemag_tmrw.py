@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime, timedelta
 
 import requests
 
@@ -10,26 +11,16 @@ ROOT_URL = os.environ.get('SOOP_URL')
 AUTH_STR = os.environ.get('SOOP_AUTH')
 
 # to do a day that's not today
-# tmrw = datetime.today() + timedelta(days=1)
-# tmrwFormatted = datetime.strftime(tmrw, '%Y/%m/%d')
-
-# not really sure how this happened.... it shouldn't be this
-# bozeMag = soopProcess.processor(
-    # baseUrl='http://bozemanmagazine.com/events',
-    # linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
-    # urlType='crawled',
-    # today=True,
-# )
-today = datetime.today()
-todayFormatted = datetime.strftime(today, '%Y/%m/%d')
-eventDay = datetime.strftime(today, '%-m/%-d/%Y')
+tmrw = datetime.today() + timedelta(days=1)
+tmrwFormatted = datetime.strftime(tmrw, '%Y/%m/%d')
+eventDay = datetime.strftime(tmrw, '%-m/%-d/%Y')
 
 bozeMag = soopProcess.processor(
-    baseUrl='http://bozemanmagazine.com/events/calendar/' + time.strftime('%Y/%m/%d'),
-    linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
+    baseUrl='http://bozemanmagazine.com/events/calendar/' + tmrwFormatted,
+    linkRegex='/' + tmrwFormatted + '.*',
     urlType='crawled',
     linkBase='http://bozemanmagazine.com/events',
-    today=True,
+    day=eventDay,
 )
 
 

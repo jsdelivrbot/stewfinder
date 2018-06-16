@@ -21,7 +21,7 @@ class processor(object):
                  endNum=None,
                  linkRegex=None,
                  linkBase=None,
-                 today=False
+                 day=None
                  ):
         super(processor, self).__init__()
 
@@ -31,7 +31,7 @@ class processor(object):
         self.endNum = endNum
         self.linkBase = linkBase
         self.linkRegex = linkRegex
-        self.today = today
+        self.day = day
 
         # build input Df using the soopPull module and the information above
         self.inputDF = self.build_input_DF()
@@ -120,7 +120,7 @@ class processor(object):
 
         df = summarizedDF
 
-        if self.today == True:
-            df = df.assign(day=time.strftime('%-m/%-d/%Y'))
+        if self.day:
+            df = df.assign(day=self.day)
 
         return df
