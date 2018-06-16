@@ -11,7 +11,7 @@ ROOT_URL = os.environ.get('SOOP_URL')
 AUTH_STR = os.environ.get('SOOP_AUTH')
 
 # to do a day that's not today
-tmrw = datetime.today() + timedelta(days=1)
+tmrw = datetime.today() + timedelta(days=4)
 tmrwFormatted = datetime.strftime(tmrw, '%Y/%m/%d')
 eventDay = datetime.strftime(tmrw, '%-m/%-d/%Y')
 
@@ -34,7 +34,7 @@ bozeMagData = bozeMag.process(
 )
 
 allData = bozeMagData
-allData.outUrl.to_csv('bozemagtmrw.csv')
+allData.outUrl.to_csv('bozemag4tmrw.csv')
 
 DATA = allData.to_dict('index')
 

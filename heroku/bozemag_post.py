@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, timedelta
 import time
 
 import requests
@@ -29,7 +30,7 @@ bozeMag = soopProcess.processor(
     linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
     urlType='crawled',
     linkBase='http://bozemanmagazine.com/events',
-    today=True,
+    day=eventDay,
 )
 
 
@@ -43,7 +44,7 @@ bozeMagData = bozeMag.process(
 )
 
 allData = bozeMagData
-allData.outUrl.to_csv('data.csv')
+allData.outUrl.to_csv('bozemagtoday.csv')
 
 DATA = allData.to_dict('index')
 
