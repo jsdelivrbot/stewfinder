@@ -175,3 +175,22 @@ STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
 
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/var/log/app-logs/django.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
