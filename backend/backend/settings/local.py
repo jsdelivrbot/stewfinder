@@ -26,13 +26,14 @@ SECRET_KEY = 'ba_t3o90t$&3a25%jjqu9ap+w14zkf8j390y!+*g_8=p#*cbi='
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-# CORS_EXPOSE_HEADERS = (
-    # 'Access-Control-Allow-Origin: *',
-    # 'Access-Control-Allow-Headers: *',
-    # 'Access-Control-Allow-Methods: *'
-# )
+
+CORS_EXPOSE_HEADERS = (
+    'Access-Control-Allow-Origin: *',
+    'Access-Control-Allow-Headers: *',
+    'Access-Control-Allow-Methods: *'
+)
 
 
 # Application definition
@@ -115,30 +116,31 @@ else:
 
 # REST_FRAMEWORK = {
    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-       # 'rest_framework.authentication.TokenAuthentication',
+    # 'rest_framework.authentication.TokenAuthentication',
    # ),
    # 'DEFAULT_PERMISSION_CLASSES': (
-        # 'rest_framework.permissions.IsAdminUser'
+    # 'rest_framework.permissions.IsAdminUser'
    # ),
 # }
 
-# REST_FRAMEWORK = { 'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',  # enables simple command line authentication
-    # ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-        # 'rest_framework.permissions.IsAuthenticated',
-    # ),
-    # 'UNAUTHENTICATED_USER': None
-# }
-
-REST_FRAMEWORK = {
-    # other settings...
-
-    'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
+REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework.authentication.TokenAuthentication',
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.BasicAuthentication',
+    # enables simple command line authentication
+),
+    'DEFAULT_PERMISSION_CLASSES': (
+    'rest_framework.permissions.IsAuthenticated',
+),
+    'UNAUTHENTICATED_USER': None
 }
+
+# REST_FRAMEWORK = {
+# # other settings...
+
+# 'DEFAULT_AUTHENTICATION_CLASSES': [],
+# 'DEFAULT_PERMISSION_CLASSES': [],
+# }
 
 
 # Password validation
@@ -181,25 +183,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 
 
-
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': '/var/log/app-logs/django.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
