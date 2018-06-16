@@ -1,7 +1,11 @@
-import { createSelector } from "reselect";
-import _ from "lodash";
+//@format
+import {createSelector} from 'reselect';
+import _ from 'lodash';
 
-const soopSelector = state => state.soops;
+const soopSelector = state => {
+  console.log(state.soops);
+  return state.soops;
+};
 const selectedSoopSelector = state => state.activeDay;
 
 const getSoops = (soops, activeDay) => {

@@ -25,6 +25,7 @@ bozeMag = soopProcess.processor(
     baseUrl='http://bozemanmagazine.com/events/calendar/' + time.strftime('%Y/%m/%d'),
     linkRegex='/' + time.strftime('%Y/%m/%d') + '.*',
     urlType='crawled',
+    linkBase='http://bozemanmagazine.com/events',
     today=True,
 )
 

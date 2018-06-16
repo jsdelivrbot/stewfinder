@@ -1,5 +1,5 @@
 //@format
-import axios from "axios";
+import axios from 'axios';
 
 //we need to make sure that this action creator is wired to redux
 export const SOOP_SELECTED = 'soop_selected';
@@ -10,16 +10,21 @@ export const SOOP_USER_VOTES = 'soop_user_votes';
 export const DAY_SELECTED = 'day_selected';
 export const FETCH_SOOPS = 'fetch_soops';
 
-//pulling out of local storage is too slow
-//const ROOT_URL = localStorage.getItem("root_url");
-//const API_KEY = localStorage.getItem("auth_token");
-//const AUTH_STR = "Token " + API_KEY;
+//pulling out of local storage is too slow for remote
+//const ROOT_URL = localStorage.getItem('root_url');
+//const API_KEY = localStorage.getItem('auth_token');
+//const AUTH_STR = 'Token ' + API_KEY;
 
+//local
+//const AUTH_STR = 'Token 01f3fa85a9d727bf4651baa2b753ada32390bd06';
+//const ROOT_URL = 'http://localhost:8000';
+
+//remote
 const AUTH_STR = "Token 1eefcbd33b05b8c56182ae2f953bdd7a33f367b4";
 const ROOT_URL = "http://stewfinder-backend.us-west-2.elasticbeanstalk.com";
 
-axios.defaults.xsrfCookieName = "csrftoken";
-axios.defaults.xsrfHeaderName = "X-CSRFToken";
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 export function selectSoop(soop) {
   return {
@@ -32,11 +37,9 @@ export function selectSoop(soop) {
 // link it to state to have the button change verbs / function
 export function getUserVotes(soop) {
   const soop_id = soop.id;
-  const request = axios
-    .get(`${ROOT_URL}/api/soops/${soop_id}/votes/user`, {
-      headers: {Authorization: AUTH_STR}
-    })
-    .then(res => console.log(res));
+  const request = axios.get(`${ROOT_URL}/api/soops/${soop_id}/votes/user`, {
+    headers: {Authorization: AUTH_STR}
+  });
   return dispatch => {
     request.then(({data}) => {
       dispatch({type: SOOP_USER_VOTES, payload: data});

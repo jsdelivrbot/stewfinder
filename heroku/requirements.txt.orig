@@ -7,6 +7,10 @@ coreschema==0.0.4
 datefinder==0.6.1
 Django==2.0.4
 django-cors-headers==2.2.0
+<<<<<<< HEAD
+django-vote==2.1.7
+=======
+>>>>>>> heroku-prod
 djangorestframework==3.8.2
 idna==2.6
 itypes==1.1.0
