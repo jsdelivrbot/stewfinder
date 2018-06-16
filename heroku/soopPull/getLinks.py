@@ -1,6 +1,7 @@
 import re
 
 import requests
+
 from bs4 import BeautifulSoup
 
 
@@ -8,7 +9,6 @@ class linkGetter(object):
     """
     Superclass for numbered and crawling link getters
     """
-
 
     def __init__(self, baseUrl, *args, **kwargs):
         """
@@ -18,7 +18,6 @@ class linkGetter(object):
         super(linkGetter, self).__init__()
         self.baseUrl = baseUrl
 
-
     def get_links(self, links=None):
         """
         basline method (subclasses should override this)
@@ -27,9 +26,8 @@ class linkGetter(object):
 
         return links
 
-
     def validate_links(self):
-        """Check links produced by get_links against the links which have 
+        """Check links produced by get_links against the links which have
         already been scraped and added to the DB
         :returns: a filtered array of links
 
@@ -44,7 +42,6 @@ class numberedLinks(linkGetter):
     system -- IE http://calendar.msu.montana.edu/events/<event #>
     """
 
-
     def __init__(self, baseUrl, startNum, endNum, *args, **kwargs):
         """
         :startNum: the first <event #> to scrape
@@ -54,7 +51,6 @@ class numberedLinks(linkGetter):
         super(numberedLinks, self).__init__(baseUrl=baseUrl, *args, **kwargs)
         self.startNum, self.endNum = startNum, endNum
 
-
     def get_links(self):
         """produce a list of links between start and end numbers
         :returns: an array (list) of numbered full links
@@ -62,7 +58,7 @@ class numberedLinks(linkGetter):
         """
 
         return [self.baseUrl + str(num)
-            for num in range(self.startNum, self.endNum)]
+                for num in range(self.startNum, self.endNum)]
 
 
 class crawlLinks(linkGetter):
@@ -77,11 +73,11 @@ class crawlLinks(linkGetter):
     concatenated with the rest of the url
     """
 
-
-    def __init__(self, baseUrl, linkRegex='.*', *args, **kwargs):
+    def __init__(self, baseUrl, linkRegex='.*',
+                 linkBase=None, *args, **kwargs):
         super(crawlLinks, self).__init__(baseUrl=baseUrl, *args, **kwargs)
         self.linkRegex = linkRegex
-
+        self.linkBase = linkBase
 
     def get_links(self):
         """Produce a list of links branching out from the baseUrl
@@ -96,26 +92,32 @@ class crawlLinks(linkGetter):
 
         # pick out a list of all link tags
         # IE linkTags[0] is:
-            # <a href="http://www.bozemanevents.net/">Home</a>
+        # <a href="http://www.bozemanevents.net/">Home</a>
         linkTags = soup.find_all('a', href=True)
 
         # extract the links from the linkTags
         # IE links[0] is:
-            # http://www.bozemanevents.net/
+        # http://www.bozemanevents.net/
         links = [x['href'] for x in linkTags]
 
         # filter links based on the provided regex
         # IE on eventul, links like this drop out:
-            # //movies.eventful.com/bozeman/browse
+        # //movies.eventful.com/bozeman/browse
         # but links like this stay:
-            # //eventful.com/bozeman/events/zoso-/E0-001-112140272-1
+        # //eventful.com/bozeman/events/zoso-/E0-001-112140272-1
         links = [x for x in links
-             if re.search(self.linkRegex, x)]
+                 if re.search(self.linkRegex, x)]
 
         # extract the relative url from the link
         links = [re.findall(self.linkRegex, x)[0] for x in links]
 
-        # concat the basUrl for complete link
+        # concat the basUrl or the linkBase for complete link
+
+        if self.linkBase:
+            links = [self.linkBase + x for x in links]
+
+            return list(set(links))
+
         links = [self.baseUrl + x for x in links]
 
         return list(set(links))

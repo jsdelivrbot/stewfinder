@@ -1,3 +1,12 @@
+1. update node and npm 
+2. npm install 
+3. generate an auth_token from the backend (postman collection) 
+4. set the auth_token in src/index.js 
+5. srry, this blows
+
+6. to deploy, make sure all your aws auth stuff is taken care of and run deploy-frontend.sh
+
+-----------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

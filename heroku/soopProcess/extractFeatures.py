@@ -1,6 +1,5 @@
 import pandas as pd
 import time
-import re
 import datefinder
 
 class featureExtractor(object):
@@ -9,8 +8,7 @@ class featureExtractor(object):
     """
     def __init__(self, urlTextFoodDF, 
                  whenTag=None, locationTag=None, descTag=None,
-                 whenClass=None, descClass=None, locationClass=None,
-                 whenRegex='.*', locationRegex='.*'):
+                 whenClass=None, descClass=None, locationClass=None):
         super(featureExtractor, self).__init__()
         self.df = urlTextFoodDF
 
@@ -21,9 +19,6 @@ class featureExtractor(object):
         self.descClass = descClass
         self.whenClass = whenClass
         self.locationClass = locationClass
-
-        self.whenRegex = whenRegex
-        self.locationRegex = locationRegex
         
     def find_title(self, row):
         try:
@@ -63,22 +58,12 @@ class featureExtractor(object):
     def find_when(self, row):
         # apply the first 40 charcters of the tag / class combo of the event time
         # details (If they exist) -- strip off whitespace and add an elipsis for
-
         try:
-            r = re.compile(self.whenRegex)
-
-            when = [x.text[0:40] for x in row.find_all(
-                self.whenTag, {"class": self.whenClass})]
-
-            when = list(filter(r.search, when))
-
-            when = when[0].strip() + '...'
-
-            # when = (
-                # row.find(
-                    # self.whenTag, 
-                    # {"class": self.whenClass}).text[0:40]
-            # ).strip() + '...'
+            when = (
+                row.find(
+                    self.whenTag, 
+                    {"class": self.whenClass}).text[0:140]
+            ).strip() + '...'
 
             return when
 
@@ -120,15 +105,8 @@ class featureExtractor(object):
 
     def find_location(self, row):
         try:
-            r = re.compile(self.locationRegex)
-
-            location = [x.text for x in row.find_all(
-                self.locationTag, {"class": self.locationClass})]
-
-            location = list(filter(r.search, location))
-
-            location = location[0]
-
+            location = row.find(
+                self.locationTag, {"class": self.locationClass}).text
             return location
 
         except Exception:
