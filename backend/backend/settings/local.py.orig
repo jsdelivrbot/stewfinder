@@ -183,7 +183,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "..", "static")
 
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 5000
+<<<<<<< HEAD
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
+=======
 
 LOGGING = {
     'version': 1,
@@ -203,3 +205,4 @@ LOGGING = {
         },
     },
 }
+>>>>>>> heroku-prod
