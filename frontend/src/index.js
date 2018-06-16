@@ -16,7 +16,7 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 //);
 
 //remote
-localStorage.setItem("auth_token", "1eefcbd33b05b8c56182ae2f953bdd7a33f367b4");
+localStorage.setItem("auth_token", "324fe6cb5086fb9aca2400b796f723470288dcfa");
 localStorage.setItem(
   "root_url", "http://stewfinder-backend.us-west-2.elasticbeanstalk.com"
 );

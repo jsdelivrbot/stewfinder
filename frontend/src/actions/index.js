@@ -20,7 +20,7 @@ export const FETCH_SOOPS = 'fetch_soops';
 //const ROOT_URL = 'http://localhost:8000';
 
 //remote
-const AUTH_STR = "Token 1eefcbd33b05b8c56182ae2f953bdd7a33f367b4";
+const AUTH_STR = "Token 324fe6cb5086fb9aca2400b796f723470288dcfa";
 const ROOT_URL = "http://stewfinder-backend.us-west-2.elasticbeanstalk.com";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
