@@ -62,7 +62,7 @@ class featureExtractor(object):
             when = (
                 row.find(
                     self.whenTag, 
-                    {"class": self.whenClass}).text[0:140]
+                    {"class": self.whenClass}).text[0:40]
             ).strip() + '...'
 
             return when
