@@ -9,6 +9,6 @@
 8. to deploy, run take care of awseb auth and cli installs, then run eb deploy
 
 9. to dump the db, use:
-    pg_dump -h aat4bf9s6yui7a.csg9dlnvxudw.us-west-2.rds.amazonaws.com -U root -f ./dump.sql postgres
+    pg_dump -h aat4bf9s6yui7a.csg9dlnvxudw.us-west-2.rds.amazonaws.com -U root -f ./dump.sql ebdb
 
 10. the pw is what you think it is
