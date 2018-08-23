@@ -6,7 +6,7 @@
 6. python manage.py runserver
 7. get localhost:8000/admin and login with superuser
 
-8. to deploy, run take care of awseb auth and cli installs, then run eb deploy
+8. to deploy, take care of awseb auth and cli installs, then run eb deploy
 
 9. to dump the db, use:
     pg_dump -h aat4bf9s6yui7a.csg9dlnvxudw.us-west-2.rds.amazonaws.com -U root -f ./dump.sql ebdb

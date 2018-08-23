@@ -138,4 +138,47 @@ results = pd.DataFrame(list(map(lambda x: x['logits'], results)),
 # print("results: \n %s" % results)
 
 results = results.join(results_df)
-results.to_csv('results.csv')
+
+
+def update_event_score(score, outUrl):
+    """ update event name based on the event id """
+    sql = """ UPDATE soops_soop
+                SET score = %s
+                WHERE "outUrl" = %s"""
+    conn = None
+    updated_rows = 0
+    try:
+        # read database configuration
+        # params = config()
+        # connect to the PostgreSQL database
+        conn = psycopg2.connect(
+            dbname=dbname,
+            user=username,
+            password=password,
+            host=host,
+            port=port
+        )
+        # create a new cursor
+        cur = conn.cursor()
+        # execute the UPDATE  statement
+        cur.execute(sql, (score, outUrl))
+        # get the number of updated rows
+        updated_rows = cur.rowcount
+        # Commit the changes to the database
+        conn.commit()
+        # Close communication with the PostgreSQL database
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return updated_rows
+
+
+for index, row in results.iterrows():
+    score = row['score']
+    outUrl = row['outUrl']
+
+    update_event_score(score, outUrl)
