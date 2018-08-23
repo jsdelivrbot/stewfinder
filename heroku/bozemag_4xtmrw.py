@@ -34,9 +34,14 @@ bozeMagData = bozeMag.process(
 )
 
 allData = bozeMagData
-allData.outUrl.to_csv('bozemag4tmrw.csv')
+allData = allData.drop('lxml', axis=1)
+allData = allData.drop('text', axis=1)
+
+allData.to_csv('bozemag4tmrw.csv')
 
 DATA = allData.to_dict('index')
+print(DATA)
+
 
 with requests.session() as client:
     for row in DATA:

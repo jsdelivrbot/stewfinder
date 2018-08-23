@@ -33,7 +33,7 @@ conn = psycopg2.connect(
 )
 
 # pull in the data that contains votes
-print('importing data...')
+print('importing data to train...')
 cur = conn.cursor()
 cur.execute('SELECT * FROM soops_soop WHERE vote_score != 0')
 columns = [colname[0] for colname in cur.description]
@@ -62,14 +62,14 @@ test_df = test_df.loc[:, ['details', 'polarity']]
 
 
 # train on whole set with no limit on training epochs
-print('training on ', len(train_df), ' rows')
-print('testing on ', len(test_df), ' rows')
+print('constructing input functions...')
 train_input_fn = tf.estimator.inputs.pandas_input_fn(
     x=train_df,
     y=train_df['polarity'],
     num_epochs=None,
     shuffle=True
 )
+
 
 # predict on whole training set
 predict_train_input_fn = tf.estimator.inputs.pandas_input_fn(
@@ -86,12 +86,14 @@ predict_test_input_fn = tf.estimator.inputs.pandas_input_fn(
 )
 
 # turn the text into a feature column of words
+print('extracting text columns...')
 embedded_text_feature_column = hub.text_embedding_column(
     key='details',
     module_spec='https://tfhub.dev/google/nnlm-en-dim128/1'
 )
 
 # use a deep neural net classifier
+print('building estimator...')
 estimator = tf.estimator.DNNClassifier(
     hidden_units=[500, 100],
     feature_columns=[embedded_text_feature_column],
@@ -100,11 +102,40 @@ estimator = tf.estimator.DNNClassifier(
 )
 
 
-# default batch size is 128, so 128,000 training samples.. ~5 epochs
-estimator.train(input_fn=train_input_fn, steps=1000)
+# default batch size is 128, so 128*30 training samples.. on 573 events..
+# ~5 epochs
+print('training on ', len(train_df), ' rows')
+print('testing on ', len(test_df), ' rows')
+estimator.train(input_fn=train_input_fn, steps=60)
 
 train_eval_result = estimator.evaluate(input_fn=predict_train_input_fn)
 test_eval_result = estimator.evaluate(input_fn=predict_test_input_fn)
 
 print("Training set accuracy: {accuracy}".format(**train_eval_result))
 print("Test set accuracy: {accuracy}".format(**test_eval_result))
+
+# predict results of all events
+
+print('importing events to predict...')
+cur = conn.cursor()
+cur.execute('SELECT * FROM soops_soop')
+columns = [colname[0] for colname in cur.description]
+soops = cur.fetchall()
+cur.close()
+all_data = pd.DataFrame(soops, columns=columns)
+
+print('predicting events...')
+results_df = all_data
+results_df = results_df.loc[:, ['details', 'outUrl']]
+results_input_fn = tf.estimator.inputs.pandas_input_fn(
+    results_df,
+    shuffle=False
+)
+
+results = list(estimator.predict(input_fn=results_input_fn))
+results = pd.DataFrame(list(map(lambda x: x['logits'], results)),
+                       columns=['score'])
+# print("results: \n %s" % results)
+
+results = results.join(results_df)
+results.to_csv('results.csv')
