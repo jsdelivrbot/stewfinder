@@ -94,7 +94,11 @@ class SoopList extends Component {
               this.selectSoop(soop);
             }}>
             <div>
-              {soop.food + '... ' + soop.title + '... score: ' + soop.score}
+              {soop.food +
+                '... ' +
+                soop.title +
+                '... score: ' +
+                soop.score.toFixed(2)}
               <div className="button">
                 <button
                   ref={btn => {
