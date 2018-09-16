@@ -83,3 +83,21 @@ td.active:hover {
 .sub-title{
     text-align: right
 }
+
+.btn-purple{
+    background-color: #311b92;
+    color:#fff
+}
+
+.btn-liked{
+    background-color: #336633;
+    color:#fff
+}
+
+.btn-disliked{
+    background-color: #82312f;
+    color:#fff
+}
+.image{
+    max-width:100%
+}

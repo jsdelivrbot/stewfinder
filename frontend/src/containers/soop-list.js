@@ -74,7 +74,11 @@ class SoopList extends Component {
 
   selectSoop(soop) {
     this.resetButtonState(soop);
-    this.props.actions.selectSoop.apply(soop);
+    if (this.props.activeSoop == soop) {
+      this.props.actions.selectSoop.apply(null);
+    } else {
+      this.props.actions.selectSoop.apply(soop);
+    }
   }
 
   resetButtonState(soop) {
@@ -110,10 +114,15 @@ class SoopList extends Component {
                   ref={btn => {
                     this.likebtn = btn;
                   }}
-                  onClick={() => {
+                  onClick={e => {
                     this.handleLike(soop);
                   }}
-                  className="btn btn-success btn-sm button">
+                  className={
+                    this.state[soop.id + 'likeLabel'] == 'like' ||
+                    this.state[soop.id + 'likeLabel'] == undefined
+                      ? 'btn btn-success btn-sm button'
+                      : 'btn btn-liked btn-sm button'
+                  }>
                   {this.state[soop.id + 'likeLabel'] || 'like'}
                 </button>
                 <button
@@ -124,7 +133,12 @@ class SoopList extends Component {
                     this.handleDislike(soop);
                     //this.props.actions.dislikeSoop.apply(soop);
                   }}
-                  className="btn btn-danger btn-sm button">
+                  className={
+                    this.state[soop.id + 'dislikeLabel'] == 'dislike' ||
+                    this.state[soop.id + 'dislikeLabel'] == undefined
+                      ? 'btn btn-danger btn-sm button'
+                      : 'btn btn-disliked btn-sm button'
+                  }>
                   {this.state[soop.id + 'dislikeLabel'] || 'dislike'}
                 </button>
               </div>
