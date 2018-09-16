@@ -86,7 +86,7 @@ class SoopList extends Component {
   renderList() {
     return this.props.selectedSoops.map(soop => {
       return (
-        <div key={soop.title}>
+        <div key={soop.title} className="soop-list">
           <li
             key={soop.title}
             className="list-group-item"
@@ -101,7 +101,11 @@ class SoopList extends Component {
                   '... score: ' +
                   soop.score.toFixed(2)
                 : soop.food + '... ' + soop.title}
-              <div className="button">
+              <div
+                className="button"
+                style={{
+                  display: 'flex'
+                }}>
                 <button
                   ref={btn => {
                     this.likebtn = btn;
@@ -148,7 +152,7 @@ class SoopList extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container main-content">
         <DateBar />
         <ul className="left-align">{this.renderList()}</ul>
       </div>

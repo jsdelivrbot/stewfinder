@@ -76,7 +76,7 @@ class DateBar extends Component {
 
   render() {
     return (
-      <table className="table table-dark table-responsive-lg table-bordered">
+      <table className="date-bar table table-dark table-responsive-lg table-bordered">
         <tbody>
           <tr>{this.renderDays()}</tr>
         </tbody>

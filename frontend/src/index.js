@@ -6,6 +6,7 @@ import reduxThunk from "redux-thunk";
 
 import App from "./components/app";
 import reducers from "./reducers";
+import logo from "./static/img/soopio.png"
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -22,8 +23,14 @@ localStorage.setItem(
 );
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>,
-  document.querySelector(".container")
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <div>
+            <div class="jumbotron">
+                <img src={logo} width="500" height="100" />
+                <h1 class="sub-title">...open source snacks</h1>
+            </div>
+            <App class="app-main"/>
+        </div>
+    </Provider>,
+    document.querySelector(".container")
 );
