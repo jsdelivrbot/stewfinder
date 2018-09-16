@@ -94,6 +94,7 @@ class SoopList extends Component {
           <li
             key={soop.title}
             className="list-group-item"
+            style={{borderRadius: '25px'}}
             onClick={() => {
               this.selectSoop(soop);
             }}>
@@ -166,7 +167,7 @@ class SoopList extends Component {
 
   render() {
     return (
-      <div className="container main-content">
+      <div className="rounded-corners container main-content">
         <DateBar />
         <ul className="left-align">{this.renderList()}</ul>
       </div>

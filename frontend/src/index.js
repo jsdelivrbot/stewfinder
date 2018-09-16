@@ -25,8 +25,8 @@ localStorage.setItem(
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
         <div>
-            <div className="jumbotron">
-                <img src={logo} width="500" height="100" className='image'/>
+            <div className="jumbotron" id="jumbo" style={{"backgroundColor": "#203a45"}}>
+                <img src={logo} width="500" className='image'/>
                 <h1 className="sub-title">...open source snacks</h1>
             </div>
             <App className="app-main"/>

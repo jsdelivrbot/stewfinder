@@ -20,6 +20,7 @@
 
 .date-bar {
     margin: 8px;
+    margin-left: -3px;
     background-color:#fff
 }
 
@@ -52,8 +53,8 @@ td.active:hover {
 }
 
 .soop-details {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .soop-list{
@@ -64,10 +65,15 @@ td.active:hover {
 
 .main-content{
     border: 15px solid #eee;
+
 }
 .container {
     margin-top: 15px;
     margin-bottom: 30px;
+}
+
+.rounded-corners {
+    border-radius:25px;
 }
 
 .button{
@@ -99,5 +105,9 @@ td.active:hover {
     color:#fff
 }
 .image{
-    max-width:100%
+    max-width:100%;
+}
+
+.jumbotron{
+    color: #f8f8ff;
 }

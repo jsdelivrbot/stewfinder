@@ -68,7 +68,11 @@ class DateBar extends Component {
           onClick={() => this.props.selectDay(day.toLocaleDateString())}
           scope="col"
         >
-          {day.toLocaleString(window.navigator.language, { weekday: "short" })}
+            {
+                window.innerWidth > 365?
+                day.toLocaleString(window.navigator.language, { weekday: "short" }):
+                day.toLocaleString(window.navigator.language, { weekday: "short" }).slice(0,1)
+            }
         </td>
       );
     });
@@ -76,9 +80,17 @@ class DateBar extends Component {
 
   render() {
     return (
-      <table className="date-bar table table-dark table-responsive-lg table-bordered">
+        <table 
+            className="rounded-table date-bar table table-dark table-responsive-lg table-bordered"
+            style={{
+                    "borderCollapse":"separate",
+                    "border":"solid #f8f8ff 3px",
+                    "borderRadius":"12px",
+                    "MozBorderRadius":"6px"
+            }}
+        >
         <tbody>
-          <tr>{this.renderDays()}</tr>
+          <tr >{this.renderDays()}</tr>
         </tbody>
       </table>
     );

@@ -12,7 +12,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-main">
+      <div className="rounded-corners app-main">
         <SoopList />
       </div>
     );
