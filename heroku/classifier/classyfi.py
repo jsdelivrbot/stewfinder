@@ -181,4 +181,5 @@ for index, row in results.iterrows():
     score = row['score']
     outUrl = row['outUrl']
 
+    print('updating ', index)
     update_event_score(score, outUrl)
