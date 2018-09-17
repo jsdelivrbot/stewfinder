@@ -86,7 +86,8 @@ class DateBar extends Component {
                     "borderCollapse":"separate",
                     "border":"solid #f8f8ff 3px",
                     "borderRadius":"12px",
-                    "MozBorderRadius":"6px"
+                    "MozBorderRadius":"6px",
+                    "boxShadow": "10px 10px 10px grey"
             }}
         >
         <tbody>

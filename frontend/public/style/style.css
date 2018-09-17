@@ -64,7 +64,7 @@ td.active:hover {
 }
 
 .main-content{
-    border: 15px solid #eee;
+    border: 10px solid #f8f8ff;
 
 }
 .container {
@@ -110,4 +110,8 @@ td.active:hover {
 
 .jumbotron{
     color: #f8f8ff;
+}
+
+.col-sm-12{
+    margin: 5px;
 }

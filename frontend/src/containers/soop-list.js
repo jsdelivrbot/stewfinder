@@ -93,8 +93,8 @@ class SoopList extends Component {
         <div key={soop.title} className="soop-list">
           <li
             key={soop.title}
-            className="list-group-item"
-            style={{borderRadius: '25px'}}
+            className="list-group-item shadow col-sm-12"
+            style={{borderRadius: '10px', boxShadow: '2px 2px 2px grey'}}
             onClick={() => {
               this.selectSoop(soop);
             }}>
@@ -150,6 +150,7 @@ class SoopList extends Component {
               <div className="soop-details">
                 <p>
                   <b>
+                    <br />
                     {soop.when} <br />
                     {soop.location}
                   </b>
